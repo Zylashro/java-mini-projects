@@ -11,7 +11,7 @@ public class HighAndLow {
         this.calcHighAndLow(input);
     }
 
-    private int[] calcHighAndLow(String input) {
+    private void calcHighAndLow(String input) {
         String[] numbers = input.split(" ");
         final int INPUT_LENGTH = numbers.length;
         int[] numbersToInt = new int[INPUT_LENGTH];
@@ -25,8 +25,6 @@ public class HighAndLow {
 
         output[0] = highestInt;
         output[1] = lowestInt;
-
-        return output;
     }
 
     public int getHighestInt() {
