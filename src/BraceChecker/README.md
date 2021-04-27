@@ -1,0 +1,1 @@
+A mini Java project in which a user submits a series of "(){}[]" symbols, and we return true if the series of symbols contains a pair of said symbols. Anything else will return false.
