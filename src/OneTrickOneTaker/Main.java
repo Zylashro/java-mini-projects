@@ -21,20 +21,31 @@ public class Main {
             System.out.println("Input is not valid!");
         }
 
-        String[] playerNames = new String[players];
+        Player player = new Player();
         for (int i = 0; i < players; i++) {
             System.out.print("Enter player " + (i + 1) + "'s name: ");
-            playerNames[i] = scanner.next().trim();
+            String playerName = scanner.next().trim();
+            player.setName(playerName);
+        }
+
+        String[] playerNames = new String[players];
+        for (int i = 0; i < players; i++) {
+            playerNames[i] = player.getName();
         }
 
         scanner.close();
         DeckOfCards deck = new DeckOfCards();
 
+        Integer[] cards = new Integer[players];
         for (int i = 0; i < players; i++) {
-            deck.drawCard();
-            System.out.println(playerNames[i] + " drew the " + deck.printCard());
+            Card drawnCard = deck.drawCard();
+            cards[i] = deck.getCardValue();
+            player.setHand(drawnCard);
+            player.calcHand();
+            System.out.println(player.printHand());
         }
-        deck.calcWinner(players, playerNames);
-        System.out.println(deck.getWinner());
+
+        Game.calcWinner(players, playerNames, cards);
+        System.out.println(Game.getWinner());
     }
 }

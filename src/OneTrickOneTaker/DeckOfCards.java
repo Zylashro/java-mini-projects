@@ -6,8 +6,7 @@ public class DeckOfCards {
     private List<Card> cards = new ArrayList<Card>(52);
     private Random random;
     private Card drawnCard;
-    private Object output; // [] output = new Object[2];
-    private String winner;
+    private int cardValue;
 
     enum Suits {
         SPADES,
@@ -53,31 +52,9 @@ public class DeckOfCards {
         return drawnCard;
     }
 
-    public Object printCard() {
-        // int cardValue = drawnCard.getValue();
-        Ranks cardRank = drawnCard.getRank();
-        Suits cardSuit = drawnCard.getSuit();
-        String announce = cardRank + " of " + cardSuit;
-        // output[0] = cardValue;
-        output = announce;
-        return output;
-    }
-
-    public void calcWinner(int players, String[] playerNames) {
-        int[] values = new int[players];
-        for (int i = 0; i < players; i++) {
-            values[i] = drawnCard.getValue();
-            System.out.println(values[i]);
-        }
-        int MAZ = Arrays.stream(values).max().getAsInt();
-        System.out.println(MAZ);
-    }
-
-
-    public String getWinner() {
-        winner = "name";
-        winner = winner + " has won!";
-        return winner;
+    public int getCardValue() {
+        cardValue = drawnCard.getValue();
+        return cardValue;
     }
 
     public void printDeck() {
