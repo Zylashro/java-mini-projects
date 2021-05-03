@@ -33,6 +33,7 @@ public class DeckOfCards {
 
     DeckOfCards() {
         this.cards = cards;
+        // Create a regular 52 card deck from the ranks and suits. Duplicate cards won't be made.
         for (Suits s : Suits.values()) {
             for (Ranks r : Ranks.values()) {
                 Card card = new Card(s, r);
@@ -42,16 +43,19 @@ public class DeckOfCards {
         random = new Random();
     }
 
+    // Get random number value.
     private int randomInt(int min, int max) {
         int randomNum = random.nextInt((max - min) + 1) + min;
         return randomNum;
     }
 
+    // Get a random card from the cards array, removing it from the array in the process.
     public Card drawCard() {
         drawnCard = cards.get(randomInt(0, cards.size() - 1));
         return drawnCard;
     }
 
+    // Get the numeric value, which determines the winner, of the drawn card.
     public int getCardValue() {
         cardValue = drawnCard.getValue();
         return cardValue;

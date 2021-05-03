@@ -16,27 +16,21 @@ public class Game {
     }
 
     public static void calcWinner(int players, String[] playerNames, Integer[] cards) {
-        HashMap<String, Integer> playerHand = new HashMap<String, Integer>();
-        // int[] values = new int[players];
-
-        // Integer[] point = (Integer[]) output.get(0);
+        // Create a new hash map, add both the players names and the card they drew as a key, value pair.
+        HashMap<String, Integer> playerHands = new HashMap<String, Integer>();
         for (int i = 0; i < players; i++) {
-            playerHand.put(playerNames[i], cards[i]);
-            System.out.println(cards[i]);
+            playerHands.put(playerNames[i], cards[i]);
         }
 
-        int maxValue = Collections.max(playerHand.values());
-        // Map.Entry<String, Integer> maxValue = null;
-        for (Map.Entry<String, Integer> value : playerHand.entrySet()) {
+        // Get the highest value number from all the cards the players drew.
+        // Iterate over hash map, assign the key of the highest value to the winner string.
+        int maxValue = Collections.max(playerHands.values());
+        for (Map.Entry<String, Integer> value : playerHands.entrySet()) {
             if (value.getValue() == maxValue) {
-                // maxValue = value;
                 winner = value.getKey();
             }
         }
-
-        // winner = maxValue.getKey();
     }
-
 
     public static String getWinner() {
         winner = winner + " has won!";
